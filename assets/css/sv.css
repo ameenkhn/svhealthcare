@@ -250,16 +250,17 @@ ul{margin:0}
 .feat h3{font-size:17.5px;margin-bottom:8px}
 .feat p{font-size:14.5px;margin:0}
 
-/* ---------- doctors ---------- */
-.doc{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm);transition:transform .4s,box-shadow .4s;text-align:left}
-.doc:hover{transform:translateY(-8px);box-shadow:var(--sh-md)}
-.doc__ph{overflow:hidden;aspect-ratio:4/4.4;background:var(--soft)}
-.doc__ph img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s cubic-bezier(.2,.7,.3,1)}
-.doc:hover .doc__ph img{transform:scale(1.05)}
-.doc__body{padding:22px 24px 24px}
-.doc__body h3{font-size:19px;margin-bottom:3px}
-.doc__role{color:var(--green);font-family:var(--ff-head);font-weight:700;font-size:13.5px;margin-bottom:5px}
-.doc__qual{font-size:13px;color:var(--body);margin:0;line-height:1.5}
+/* ---------- doctors (circular consultant portraits) ---------- */
+.team{display:grid;grid-template-columns:repeat(6,1fr);gap:38px 22px;align-items:start}
+.tm{text-align:center}
+.tm__ph{position:relative;width:100%;max-width:176px;aspect-ratio:1;margin:0 auto 22px}
+.tm__ph::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px dashed var(--green-2);opacity:.5;transition:transform 1s cubic-bezier(.2,.7,.3,1),opacity .4s}
+.tm__ph img{position:absolute;top:11px;left:11px;width:calc(100% - 22px);height:calc(100% - 22px);border-radius:50%;object-fit:cover;background:var(--soft-2);box-shadow:var(--sh-sm);transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.tm:hover .tm__ph::before{transform:rotate(180deg);opacity:1}
+.tm:hover .tm__ph img{transform:scale(1.045)}
+.tm h3{font-size:17px;margin-bottom:4px;letter-spacing:-.015em}
+.tm__role{color:var(--green);font-family:var(--ff-head);font-weight:700;font-size:13.5px;line-height:1.45;margin-bottom:6px;min-height:2.9em}
+.tm__qual{font-size:12.5px;color:var(--body);margin:0;line-height:1.55}
 
 /* ---------- doctor profile rows ---------- */
 .prof{display:grid;grid-template-columns:250px 1fr;gap:34px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;box-shadow:var(--sh-sm)}
@@ -275,6 +276,19 @@ ul{margin:0}
 .chips.center{justify-content:center}
 .chip{background:var(--soft-2);color:var(--navy-2);border-radius:40px;padding:8px 17px;font-size:13.5px;font-weight:600}
 .chip i{color:var(--green);margin-right:6px;font-size:12px}
+
+/* ---------- shop / product cards ---------- */
+.shop{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.pr{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 24px 24px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s,border-color .35s}
+.pr:hover{transform:translateY(-6px);box-shadow:var(--sh-md);border-color:var(--soft-2)}
+.pr__ph{aspect-ratio:1;border-radius:var(--r);overflow:hidden;background:var(--soft);margin-bottom:18px}
+.pr__ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.pr:hover .pr__ph img{transform:scale(1.055)}
+.pr h3{font-size:16.5px;line-height:1.35;margin-bottom:11px}
+.pr__price{font-family:var(--ff-head);font-weight:800;font-size:21px;color:var(--navy);margin-bottom:20px;line-height:1}
+.pr__act{margin-top:auto;display:flex;flex-direction:column;align-items:stretch}
+.pr__buy{width:100%}
+.pr__buy i{font-size:11px}
 
 /* ---------- quotes ---------- */
 .quote{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 30px;box-shadow:var(--sh-sm);height:100%;display:flex;flex-direction:column}
@@ -423,6 +437,8 @@ ul{margin:0}
   .hero__art{min-height:0;height:440px;max-width:560px}
   .split{grid-template-columns:1fr;gap:52px}
   .g3{grid-template-columns:repeat(2,1fr)}
+  .shop{grid-template-columns:repeat(3,1fr);gap:22px}
+  .team{grid-template-columns:repeat(3,1fr);gap:40px 24px}
   .phero__in{grid-template-columns:1fr;gap:36px;padding:56px 0}
   .phero__ph{max-width:640px}
   .ft__grid{grid-template-columns:1fr 1fr;gap:36px}
@@ -435,6 +451,14 @@ ul{margin:0}
   .hero__ph2{bottom:-8%;width:56%}
   .g2,.g3,.g4,.stats__grid{grid-template-columns:1fr}
   .stats__grid{grid-template-columns:1fr 1fr;gap:32px 14px}
+  .team{grid-template-columns:repeat(2,1fr);gap:34px 16px}
+  .tm__ph{max-width:150px}
+  .shop{grid-template-columns:repeat(2,1fr);gap:14px}
+  .pr{padding:20px 17px 18px;border-radius:var(--r)}
+  .pr h3{font-size:15px}
+  .pr__price{font-size:19px;margin-bottom:16px}
+  .pr__ph{margin-bottom:13px}
+  .pr__buy{padding:13px 16px;font-size:13.5px}
   .prof{grid-template-columns:1fr}
   .prof__img img{max-width:280px}
   .cta{padding:48px 26px}
