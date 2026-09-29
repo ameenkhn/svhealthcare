@@ -246,7 +246,7 @@
       pop.innerHTML =
         '<div class="pop__card">' +
           '<button type="button" class="pop__x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>' +
-          '<div class="pop__ic" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></div>' +
+          '<img class="pop__logo" src="assets/img/sv/logo/sv-logo.webp" width="86" height="55" alt="S V Healthcare logo">' +
           '<h3 id="pop-title">Join Our WhatsApp Community</h3>' +
           '<p>Get health tips, clinic updates and exclusive offers from S V Healthcare, straight on WhatsApp.</p>' +
           '<a href="https://chat.whatsapp.com/K3ubNDX2UpJLYl7xKh9egJ?mode=gi_t" target="_blank" rel="noopener" class="btn btn--wa"><i class="fa-brands fa-whatsapp"></i> Join Community</a>' +
