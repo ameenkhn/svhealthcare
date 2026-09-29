@@ -805,3 +805,21 @@ ul{margin:0}
   .sv-load__box{width:108px;height:108px}
   .sv-load__logo{width:64px}
 }
+
+/* ---- Welcome pop-up: WhatsApp community + app download ---- */
+.pop{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;padding:var(--gut);background:rgba(8,31,54,.58);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+.pop.is-open{opacity:1;visibility:visible}
+.pop__card{position:relative;width:100%;max-width:420px;max-height:calc(100dvh - 32px);overflow-y:auto;background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:34px 28px 28px;text-align:center;transform:translateY(18px) scale(.97);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.pop.is-open .pop__card{transform:none}
+.pop__x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:none;background:var(--soft);color:var(--ink);font-size:17px;cursor:pointer;display:grid;place-items:center;transition:background .25s}
+.pop__x:hover{background:var(--line)}
+.pop__ic{width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:#22c05e;color:#fff;display:grid;place-items:center;font-size:32px;box-shadow:0 12px 28px rgba(34,192,94,.32)}
+.pop__card h3{margin:0 0 8px;font-family:var(--ff-head);font-weight:800;font-size:23px;line-height:1.25;color:var(--ink)}
+.pop__card p{margin:0 0 20px;font-size:15px;line-height:1.6}
+.pop__card .btn--wa{width:100%}
+.pop__apps{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+.pop__apps-label{display:block;margin-bottom:12px;font-family:var(--ff-head);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+.pop__apps .ft__apps-row{justify-content:center}
+.pop__apps .appbtn{flex:1 1 150px;justify-content:center;background:var(--navy);border-color:var(--navy)}
+.pop__apps .appbtn:hover{background:var(--green);border-color:var(--green)}
+@media (prefers-reduced-motion: reduce){.pop,.pop__card{transition:none}}

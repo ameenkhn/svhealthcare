@@ -236,6 +236,55 @@
       revealEls.forEach(function (el) { el.classList.add("rv-in"); });
     }
 
+    /* ---- Welcome pop-up: WhatsApp community + apps (every page load) ---- */
+    (function () {
+      var pop = document.createElement("div");
+      pop.className = "pop";
+      pop.setAttribute("role", "dialog");
+      pop.setAttribute("aria-modal", "true");
+      pop.setAttribute("aria-labelledby", "pop-title");
+      pop.innerHTML =
+        '<div class="pop__card">' +
+          '<button type="button" class="pop__x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>' +
+          '<div class="pop__ic" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></div>' +
+          '<h3 id="pop-title">Join Our WhatsApp Community</h3>' +
+          '<p>Get health tips, clinic updates and exclusive offers from S V Healthcare, straight on WhatsApp.</p>' +
+          '<a href="https://chat.whatsapp.com/K3ubNDX2UpJLYl7xKh9egJ?mode=gi_t" target="_blank" rel="noopener" class="btn btn--wa"><i class="fa-brands fa-whatsapp"></i> Join Community</a>' +
+          '<div class="pop__apps">' +
+            '<span class="pop__apps-label">Download Our Apps</span>' +
+            '<div class="ft__apps-row">' +
+              '<a href="https://play.google.com/store/apps/details?id=com.exly.sveyecare" target="_blank" rel="noopener" class="appbtn"><svg class="appbtn__ic" aria-hidden="true"><use href="#i-gplay"/></svg><span><small>Get it on</small>Google Play</span></a>' +
+              '<a href="https://apps.apple.com/in/app/sv-health-app/id6761810427" target="_blank" rel="noopener" class="appbtn"><svg class="appbtn__ic" aria-hidden="true"><use href="#i-apple"/></svg><span><small>Download on the</small>App Store</span></a>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(pop);
+
+      var lastFocus = null;
+      function closePop() {
+        if (!pop.classList.contains("is-open")) return;
+        pop.classList.remove("is-open");
+        unlockScroll();
+        document.removeEventListener("keydown", onKey);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      function onKey(e) { if (e.key === "Escape" || e.key === "Esc") closePop(); }
+      pop.addEventListener("click", function (e) {
+        if (e.target === pop || e.target.closest(".pop__x")) closePop();
+        else if (e.target.closest("a")) setTimeout(closePop, 150);
+      });
+
+      /* open shortly after the preloader clears */
+      setTimeout(function () {
+        if (drawerIsOpen()) return;
+        lastFocus = document.activeElement;
+        pop.classList.add("is-open");
+        lockScroll();
+        document.addEventListener("keydown", onKey);
+        requestAnimationFrame(function () { requestAnimationFrame(function () { pop.querySelector(".pop__x").focus(); }); });
+      }, 1200);
+    })();
+
     /* ---- Counter animation ---- */
     var counters = document.querySelectorAll("[data-count]");
     if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
